@@ -1,0 +1,21 @@
+# Maven / Java
+/target/
+*.log
+*.class
+
+# IDE files
+/.classpath
+/.project
+/.settings/
+/.idea/
+*.iml
+
+# VS Code
+/.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Other
+*.tmp
