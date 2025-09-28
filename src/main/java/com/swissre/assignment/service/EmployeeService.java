@@ -40,15 +40,22 @@ public class EmployeeService {
 
     private int getDepth(Employee emp) {
         int depth = 0;
-        while (emp.getManagerId() != null) {
-            emp = employees.get(emp.getManagerId());
+        Set<Integer> visited = new HashSet<>();
+        Integer managerId = emp.getManagerId();
+        while (managerId != null) {
+            if (visited.contains(managerId)) {
+                break;
+            }
+            visited.add(managerId);
+            Employee manager = employees.get(managerId);
+            if (manager == null) {
+                depth++;
+                break;
+            }
+
             depth++;
+            managerId = manager.getManagerId();
         }
         return depth;
-    }
-
-    // For testing
-    public int getDepthForTest(Employee emp) {
-        return getDepth(emp);
     }
 }
